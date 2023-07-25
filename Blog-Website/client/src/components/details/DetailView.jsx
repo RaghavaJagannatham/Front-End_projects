@@ -46,7 +46,7 @@ const Heading = styled(Typography)`
 `;
 
 const Author = styled(Box)(({ theme }) => ({
-    color: '#878787',
+    color: '#fff',
     display: 'flex',
     margin: '20px 0',
     [theme.breakpoints.down('sm')]: {
@@ -90,16 +90,16 @@ const DetailView = () => {
                     </>
                 }
             </Box>
-            <Heading>{post.title}</Heading>
+            <Heading  style={{color: '#fff'}}>{post.title}</Heading>
 
             <Author>
                 <Link to={`/?username=${post.username}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                     <Typography>Author: <span style={{fontWeight: 600}}>{post.username}</span></Typography>
                 </Link>
-                <Typography style={{marginLeft: 'auto'}}>{new Date(post.createdDate).toDateString()}</Typography>
+                <Typography style={{marginLeft: 'auto', color: '#878787'}}>{new Date(post.createdDate).toDateString()}</Typography>
             </Author>
 
-            <Typography>{post.description}</Typography>
+            <Typography style={{marginLeft: 'auto', color: '#878787'}}>{post.description}</Typography>
             <Comments post={post} />
         </Container>
     )

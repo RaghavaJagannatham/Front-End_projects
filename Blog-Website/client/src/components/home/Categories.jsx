@@ -5,7 +5,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { categories } from '../../constants/data';
 
 const StyledTable = styled(Table)`
-    border: 1px solid rgba(224, 224, 224, 1);
+    border: 1px solid rgb(205 94 249/1);
 `;
     
 const StyledButton = styled(Button)`
@@ -18,7 +18,7 @@ const StyledButton = styled(Button)`
     
 const StyledLink = styled(Link)`
     text-decoration: none;
-    color: inherit;
+    color: #fff;
 `;
 
 const Categories = () => {

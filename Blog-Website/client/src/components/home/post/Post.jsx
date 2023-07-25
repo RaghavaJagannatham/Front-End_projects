@@ -22,16 +22,18 @@ const Image = styled('img')({
 });
 
 const Text = styled(Typography)`
-    color: #878787
+    color: #fff;
     font-size: 12px;
 `;
 
 const Heading = styled(Typography)`
+    color:#fff;
     font-size: 18px;
     font-weight: 600
 `;
 
 const Details = styled(Typography)`
+    color:#fff;
     font-size: 14px;
     word-break: break-word;
 `;
@@ -48,7 +50,7 @@ const Post = ({ post }) => {
             <Image src={url} alt="post" />
             <Text>{post.categories}</Text>
             <Heading>{addEllipsis(post.title, 20)}</Heading>
-            <Text>Author: {post.username}</Text>
+            <Text>Author:{post.username}</Text>
             <Details>{addEllipsis(post.description, 100)}</Details>
         </Container>
     )

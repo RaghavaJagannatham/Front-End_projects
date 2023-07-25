@@ -6,14 +6,21 @@ import { useNavigate } from 'react-router-dom';
 import { API } from '../../service/api';
 import { DataContext } from '../../context/DataProvider';
 
+import logo from '../../logo.png';
+
 const Component = styled(Box)`
-    width: 400px;
+    width: 450px;
     margin: auto;
-    box-shadow: 5px 2px 5px 2px rgb(0 0 0/ 0.6);
+    background-color:rgba(41,27,65,0.5);
+    border-radius:20px;
+    position:absolute;
+    top:9rem;
+    left:24rem;
+    box-shadow: 5px 2px 5px 2px rgb(205 94 249/0.5);
 `;
 
 const Image = styled('img')({
-    width: 100,
+    width: 250,
     display: 'flex',
     margin: 'auto',
     padding: '50px 0 0'
@@ -27,6 +34,9 @@ const Wrapper = styled(Box)`
     flex-direction: column;
     & > div, & > button, & > p {
         margin-top: 20px;
+    }
+    & div, & > input{
+        color: white;
     }
 `;
 
@@ -48,8 +58,8 @@ const SignupButton = styled(Button)`
 `;
 
 const Text = styled(Typography)`
-    color: #878787;
     font-size: 12px;
+    color: #fff;
 `;
 
 const Error = styled(Typography)`
@@ -80,7 +90,6 @@ const Login = ({ isUserAuthenticated }) => {
     const navigate = useNavigate();
     const { setAccount } = useContext(DataContext);
 
-    const imageURL = 'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
 
     useEffect(() => {
         showError(false);
@@ -122,33 +131,34 @@ const Login = ({ isUserAuthenticated }) => {
         }
     }
 
+    
     const toggleSignup = () => {
         account === 'signup' ? toggleAccount('login') : toggleAccount('signup');
     }
 
     return (
-        <Component>
+        <Component className='loginpage'>
             <Box>
-                <Image src={imageURL} alt="blog" />
+                <Image src={logo} alt="blog" />
                 {
                     account === 'login' ?
                         <Wrapper>
-                            <TextField variant="standard" value={login.username} onChange={(e) => onValueChange(e)} name='username' label='Enter Username' />
-                            <TextField variant="standard" value={login.password} onChange={(e) => onValueChange(e)} name='password' label='Enter Password' />
+                            <TextField variant="standard" color="secondary" focused value={login.username} onChange={(e) => onValueChange(e)} name='username' label='Enter UserName' />
+                            <TextField variant="standard" color="secondary" focused  value={login.password} onChange={(e) => onValueChange(e)} name='password' label='Enter Password' />
 
                             {error && <Error>{error}</Error>}
 
-                            <LoginButton variant="contained" onClick={() => loginUser()} >Login</LoginButton>
+                            <LoginButton variant="contained" color="secondary" focused onClick={() => loginUser()} >Login</LoginButton>
                             <Text style={{ textAlign: 'center' }}>OR</Text>
                             <SignupButton onClick={() => toggleSignup()} style={{ marginBottom: 50 }}>Create an account</SignupButton>
                         </Wrapper> :
                         <Wrapper>
-                            <TextField variant="standard" onChange={(e) => onInputChange(e)} name='name' label='Enter Name' />
-                            <TextField variant="standard" onChange={(e) => onInputChange(e)} name='username' label='Enter Username' />
-                            <TextField variant="standard" onChange={(e) => onInputChange(e)} name='password' label='Enter Password' />
+                            <TextField variant="standard" color="secondary" focused  onChange={(e) => onInputChange(e)} name='name' label='Enter Name' className='textfield' />
+                            <TextField variant="standard" color="secondary" focused onChange={(e) => onInputChange(e)} name='username' label='Enter Username' className='textfield'/>
+                            <TextField variant="standard" color="secondary" focused onChange={(e) => onInputChange(e)} name='password' label='Enter Password' className='textfield' />
 
                             <SignupButton onClick={() => signupUser()} >Signup</SignupButton>
-                            <Text style={{ textAlign: 'center' }}>OR</Text>
+                            
                             <LoginButton variant="contained" onClick={() => toggleSignup()}>Already have an account</LoginButton>
                         </Wrapper>
                 }

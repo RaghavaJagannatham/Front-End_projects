@@ -7,10 +7,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(../../client/src/background.png);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.loginpage{
+  background: url(../src/background.png);
+}
 
+.login_main{
+  background-color: red;
+}
+.textfield{
+  color:rgb(205 94 249/0.5);
+}
